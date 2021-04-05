@@ -138,67 +138,51 @@ https://github.com/Ananthoju-Pranav-Sai/AI1103/blob/main/Assignment_6/main.tex
 \section*{Solution}
 Given,
 \begin{align}
-    Y=\sum_{r=1}^{n}a_rX_r
+    Y&=\sum_{r=1}^{n}a_rX_r
 \end{align}
 The characteristic function of a random variable Y is defined as
 \begin{align}
-    C_{Y}\brak{t}=E[e^{itY}]
-\end{align}
-\begin{align}
-    \implies C_{Y}\brak{t}=E[e^{it\sum_{r=1}^{n}a_rX_r}]\\
-    \implies C_{Y}\brak{t}=\prod_{r=1}^{n}E[e^{ita_rX_r}]\\
-    \implies C_{Y}\brak{t}=\prod_{r=1}^{n}C_{X_r}\brak{a_rt}
+    C_{Y}\brak{t}&=E[e^{itY}\\
+    \implies C_{Y}\brak{t}&=E[e^{it\sum_{r=1}^{n}a_rX_r}]\\
+    \implies C_{Y}\brak{t}&=\prod_{r=1}^{n}E[e^{ita_rX_r}]\\
+    \implies C_{Y}\brak{t}&=\prod_{r=1}^{n}C_{X_r}\brak{a_rt}
 \end{align}
 By taking $a_r=2^{-r}$ we get,
 \begin{align}
-    C_{Y}\brak{t}=\prod_{r=1}^{n}C_{X_r}\brak{\frac{t}{2^r}}
+    C_{Y}\brak{t}&=\prod_{r=1}^{n}C_{X_r}\brak{\frac{t}{2^r}}
     \label{a}
 \end{align}
 As random variables $X_r's$ follow discrete uniform distribution with only two possible outcomes ($X_r=-1$ and $X_r=1$) the characteristic equation of $X_r$ is
 \begin{align}
-    C_{X_r}\brak{t}=\sum_{k}e^{ikt}\pr{X_r=k}
-\end{align}
-\begin{align}
-    \implies C_{X_r}\brak{t}=\frac{e^{-it}}{2}+\frac{e^{it}}{2}
-\end{align}
-\begin{align}
-    \implies C_{X_r}\brak{t}=\frac{1+e^{2it}}{2e^{it}}
-\end{align}
-\begin{align}
-        \implies C_{X_r}\brak{\frac{t}{2^r}}=\frac{1+e^{2i\brak{\frac{t}{2^r}}}}{2e^{i\brak{\frac{t}{2^r}}}}
+    C_{X_r}\brak{t}&=\sum_{k}e^{ikt}\pr{X_r=k}\\
+    \implies C_{X_r}\brak{t}&=\frac{e^{-it}}{2}+\frac{e^{it}}{2}\\
+    \implies C_{X_r}\brak{t}&=\frac{1+e^{2it}}{2e^{it}}\\
+    \implies C_{X_r}\brak{\frac{t}{2^r}}&=\frac{1+e^{2i\brak{\frac{t}{2^r}}}}{2e^{i\brak{\frac{t}{2^r}}}}
         \label{b}
 \end{align}
 using \eqref{b} in \eqref{a}
 \begin{align}
-    C_{Y}\brak{t}=\prod_{r=1}^{n}\brak{\frac{1+e^{2i\brak{\frac{t}{2^r}}}}{2e^{i\brak{\frac{t}{2^r}}}}}
-\end{align}
-\begin{align}
-    \implies C_{Y}\brak{t}=\frac{\brak{1+e^{it}}\brak{1+e^{i\brak{\frac{t}{2}}}}....\brak{1+e^{i\brak{\frac{t}{2^{n-1}}}}}}{2^n\brak{e^{i\sum_{r=1}^n\frac{t}{2^r}}}}
-\end{align}
-\begin{align}
-     \therefore C_{Y}\brak{t}=\frac{\brak{e^{2it}-1}}{2^ne^{it\brak{\frac{2^{n+1}-1}{2^{n+1}}}}\brak{e^{\brak{\frac{it}{2^{n-1}}}}-1}}
+    C_{Y}\brak{t}&=\prod_{r=1}^{n}\brak{\frac{1+e^{2i\brak{\frac{t}{2^r}}}}{2e^{i\brak{\frac{t}{2^r}}}}}\\
+    \implies C_{Y}\brak{t}&=\frac{\brak{1+e^{it}}\brak{1+e^{i\brak{\frac{t}{2}}}}....\brak{1+e^{i\brak{\frac{t}{2^{n-1}}}}}}{2^n\brak{e^{i\sum_{r=1}^n\frac{t}{2^r}}}}\\
+     \therefore C_{Y}\brak{t}&=\frac{\brak{e^{2it}-1}}{2^ne^{it\brak{\frac{2^{n+1}-1}{2^{n+1}}}}\brak{e^{\brak{\frac{it}{2^{n-1}}}}-1}}
      \label{c}
 \end{align}
 Now consider
 \begin{align}
-     \lim_{n\to\infty} C_{Y}\brak{t}
-\end{align}
-\begin{align}
+     \lim_{n\to\infty} C_{Y}\brak{t}\\
     \implies \lim_{n\to\infty}\frac{\brak{e^{2it}-1}}{2^ne^{it\brak{\frac{2^{n+1}-1}{2^{n+1}}}}\brak{e^{\brak{\frac{it}{2^{n-1}}}}-1}}
     \label{d}
 \end{align}
 We know that,
 \begin{align}
-    \lim_{n\to\infty}\brak{e^{\brak{\frac{it}{2^{n-1}}}}-1} = \frac{it}{2^{n-1}}
-    \label{e}
-\end{align}
-\begin{align}
-    \lim_{n\to\infty}e^{it\brak{\frac{2^{n+1}-1}{2^{n+1}}}}=e^{it}
+    \lim_{n\to\infty}\brak{e^{\brak{\frac{it}{2^{n-1}}}}-1} &= \frac{it}{2^{n-1}}
+    \label{e}\\
+    \lim_{n\to\infty}e^{it\brak{\frac{2^{n+1}-1}{2^{n+1}}}}&=e^{it}
     \label{f}
 \end{align}
 Using \eqref{e} and \eqref{f} in \eqref{d}
 \begin{align}
-    \lim_{n\to\infty} C_{Y}\brak{t}=\frac{\brak{e^{2it}-1}}{2ite^{it}}
+    \lim_{n\to\infty} C_{Y}\brak{t}&=\frac{\brak{e^{2it}-1}}{2ite^{it}}
     \label{g}
 \end{align}
 Now, let's assume that if $Y$ follows uniform distribution on (-1,1) then it's pdf can be written as
@@ -218,11 +202,9 @@ And it's cdf would be
 \end{align}
 It's characteristic function would be 
 \begin{align}
-   C_{Y}\brak{t}= \int_{-\infty}^{\infty} e^{ity}.f_{Y}(y) \,dy\\
-    \implies C_{Y}\brak{t}=\int_{-1}^{1} e^{ity}.\brak{\frac{1}{2}} \,dy
-\end{align}
-\begin{align}
-    \implies C_{Y}\brak{t}=\frac{\brak{e^{2it}-1}}{2ite^{it}}
+   C_{Y}\brak{t}&= \int_{-\infty}^{\infty} e^{ity}.f_{Y}(y) \,dy\\
+    \implies C_{Y}\brak{t}&=\int_{-1}^{1} e^{ity}.\brak{\frac{1}{2}} \,dy\\
+    \implies C_{Y}\brak{t}&=\frac{\brak{e^{2it}-1}}{2ite^{it}}
     \label{h}
 \end{align}
 So from \eqref{g} and \eqref{h} we conclude that as $\brak{n\rightarrow\infty}$ $Y$ converges in distribution to uniform distribution on (-1,1).
