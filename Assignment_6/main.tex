@@ -169,21 +169,25 @@ using \eqref{b} in \eqref{a}
 \end{align}
 Now consider
 \begin{align}
-     \lim_{n\to\infty} C_{Y}\brak{t}\\
+     \lim_{n\to\infty} C_{Y}\brak{t}
+     \label{d}
+\end{align}
+using \eqref{c} in \eqref{d}
+\begin{align}
     \implies \lim_{n\to\infty}\frac{\brak{e^{2it}-1}}{2^ne^{it\brak{\frac{2^{n+1}-1}{2^{n+1}}}}\brak{e^{\brak{\frac{it}{2^{n-1}}}}-1}}
-    \label{d}
+    \label{e}
 \end{align}
 We know that,
 \begin{align}
     \lim_{n\to\infty}\brak{e^{\brak{\frac{it}{2^{n-1}}}}-1} &= \frac{it}{2^{n-1}}
-    \label{e}\\
+    \label{f}\\
     \lim_{n\to\infty}e^{it\brak{\frac{2^{n+1}-1}{2^{n+1}}}}&=e^{it}
-    \label{f}
+    \label{g}
 \end{align}
-Using \eqref{e} and \eqref{f} in \eqref{d}
+Using \eqref{f} and \eqref{g} in \eqref{e}
 \begin{align}
     \lim_{n\to\infty} C_{Y}\brak{t}&=\frac{\brak{e^{2it}-1}}{2ite^{it}}
-    \label{g}
+    \label{h}
 \end{align}
 Now, let's assume that if $Y$ follows uniform distribution on (-1,1) then it's pdf can be written as
 \begin{align}
