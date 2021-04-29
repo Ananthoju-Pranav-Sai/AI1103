@@ -123,12 +123,7 @@ columns=fullflexible
 \bigskip
 \renewcommand{\thefigure}{\theenumi}
 \renewcommand{\thetable}{\theenumi}
-Download all python codes from 
-\begin{lstlisting}
-    https://github.com/Ananthoju-Pranav-Sai/AI1103/tree/main/Assignment_7_1/Codes
-\end{lstlisting}
-%
-and latex codes from 
+Download latex codes from 
 %
 \begin{lstlisting}
     https://github.com/Ananthoju-Pranav-Sai/AI1103/blob/main/Assignment_7_1/main.tex
@@ -156,8 +151,21 @@ Given p.d.f of X as
             0 & otherwise
             \end{cases} 
 \end{align}
-We can notice that if $0< x< \pi$ then $0< \sin{x}< 1$
-The c.d.f of $Y$ can be written as 
+We can notice that if $0< x< \pi$ then $0< \sin{x}< 1$.
+The c.d.f of $X$ can be written as
+\begin{align}
+    F_X(x) &= \int_{-\infty}^{x}f_X(t)\,dt
+\end{align}
+which can be written as
+\begin{align}
+    F_{X}(x)=\begin{cases} 
+            0 & x\le 0\\
+            \frac{x^2}{\pi^2}  &  0<x<\pi\\
+            1 & x\ge \pi
+            \end{cases}
+            \label{a}
+\end{align}
+Now c.d.f of $Y$ can be written as 
 \begin{align}
     F_Y(y) &= \pr{Y\leq y}\\
     \implies F_Y(y) &= \pr{\sin{X}\leq y}
@@ -165,10 +173,12 @@ The c.d.f of $Y$ can be written as
 Now for $\sin{X}\leq y$ we have two solutions i.e, either $X\leq\sin^{-1}{y}$ or $X\geq \pi-\sin^{-1}{y}$ as $X\in(0,\pi)$
 \begin{align}
     \implies F_Y(y) &= \pr{X\leq \sin^{-1}{y}}+\pr{X\geq \pi-\sin^{-1}{y}}\\
-    \implies F_Y(y) &= \int_{-\infty}^{\sin^-1{y}}f_X(x)\,dx + \int_{\pi-\sin^{-1}{y}}^{\infty}f_X(x)\,dx\\
-    \implies F_Y(y) &= \int_{0}^{\sin^-1{y}}f_X(x)\,dx + \int_{\pi-\sin^{-1}{y}}^{\pi}f_X(x)\,dx\\
-    \implies F_Y(y) &= \int_{0}^{\sin^-1{y}}\frac{2x}{\pi^2}\,dx + \int_{\pi-\sin^{-1}{y}}^{\pi}\frac{2x}{\pi^2}\,dx\\
-    \implies F_Y(y) &= \frac{x^2}{\pi^2}\Biggr]^{\sin^{-1}{y}}_{0}+\frac{x^2}{\pi^2}\Biggr]^{\pi}_{\pi-\sin^{-1}{y}}\\
+    \implies F_Y(y) &= \pr{X\leq \sin^{-1}{y}}+1-\pr{X\leq \pi-\sin^{-1}{y}}\\
+    \implies F_Y(y) &= F_X(\sin^{-1}{y})+1-F_X(\pi-\sin^{-1}{y})
+    \label{b}
+\end{align}
+using \eqref{a} in \eqref{b}
+\begin{align}
     \implies F_Y(y) &= \frac{\brak{sin^{-1}{y}}^2}{\pi^2}+1-\frac{\brak{\pi-sin^{-1}{y}}^2}{\pi^2}\\
     \implies F_Y(y) &= \frac{2sin^{-1}{y}}{\pi}
 \end{align}
