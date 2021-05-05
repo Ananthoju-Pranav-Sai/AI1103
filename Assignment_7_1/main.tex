@@ -18,6 +18,8 @@
 \usepackage{longtable}
 \usepackage{multirow}
 
+\usepackage{float}
+
 \usepackage{enumitem}
 \usepackage{mathtools}
 \usepackage{steinmetz}
@@ -176,8 +178,14 @@ Now c.d.f of $Y$ can be written as
     F_Y(y) &= \pr{Y\leq y}\\
     \implies F_Y(y) &= \pr{\sin{X}\leq y}
 \end{align}
-As $X\in(0,\pi)$ $\sin{X}\leq 1$ has two solutions i.e., either
- $X\leq \sin^{-1}{y}$ or $X\geq \pi-\sin^{-1}{y}$
+As $X\in(0,\pi)$, $\sin{X}\leq y$ has two solutions i.e., either
+ $X\leq \sin^{-1}{y}$ or $X\geq \pi-\sin^{-1}{y}$ as shown in \ref{plot}
+ \begin{figure}[H]
+     \centering
+     \includegraphics[width=\linewidth]{plot.png}
+     \caption{$Y=\sin X$ plot}
+     \label{plot}
+ \end{figure}
 \begin{align}
     \implies F_Y(y) &= \pr{X\leq \sin^{-1}{y}}+\pr{X\geq \pi-\sin^{-1}{y}}\\
     \implies F_Y(y) &= F_X(\sin^{-1}{y})+1-\pr{X\leq \pi-\sin^{-1}{y}}\\
@@ -187,8 +195,11 @@ As $X\in(0,\pi)$ $\sin{X}\leq 1$ has two solutions i.e., either
 using \eqref{a} in \eqref{b}
 \begin{align}
     \implies F_Y(y) &= \frac{\brak{\sin^{-1}{y}}^2}{\pi^2}+1-\frac{\brak{\pi-\sin^{-1}{y}}^2}{\pi^2}\\
-    \implies F_Y(y) &= \frac{2\sin^{-1}{y}}{\pi}\\
-    \because f_Y(y) &= \diff{F_Y(y)}{y}\\
+    \implies F_Y(y) &= \frac{2\sin^{-1}{y}}{\pi}
+\end{align}
+Now pdf of Y can be written as
+\begin{align}
+     f_Y(y) &= \diff{F_Y(y)}{y}\\
     \implies f_Y(y) &= \frac{2}{\pi}\diff{\brak{\sin^{-1}{y}}}{y}\\
     \implies f_Y(y) &= \frac{2}{\pi\sqrt{1-y^2}}
 \end{align}
