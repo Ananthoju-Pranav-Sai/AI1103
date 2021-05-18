@@ -162,24 +162,38 @@ and variance of Z,
     \implies \sigma^2_{Z}&=Var(X_2)+Var(X_1)-2Cov(X_1,X_2)\\
     \implies \sigma^2_{Z}&=6
 \end{align}
-As Z follows normal distribution, pdf of Z can be written as
+As Z follows normal distribution its charactersitic function can be written as
 \begin{align}
-    f_Z(z)&=\frac{1}{\sigma_Z \sqrt{2\pi}}e^{-\frac{\brak{z-\mu_Z}^2}{2\sigma_Z^2}}\\
-    \implies f_Z(z)&=\frac{1}{ \sqrt{12\pi}}e^{-\frac{{z}^2}{12}}
+    \phi_Z(t)&=e^\brak{{i\mu_Zt-\sigma^2_{Z}t^2/2}}\\
+    \implies \phi_Z(t)&=e^\brak{{0-6t^2/2}}\\
+    \implies \phi_Z(t)&=e^{-3t^2}
+\end{align}
+Now we can find pdf of Z by using a variation of Gil-Peleaz inversion formula
+\begin{align}
+    f_Z(z)&=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{-itz}\phi_Z(t)\,dt\\
+    \implies f_Z(z)&=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{\brak{-3t^2-itz}}\,dt
+    \label{a}
+\end{align}
+Using the result of Gaussian integral
+\begin{align}
+    \int_{-\infty}^{\infty}e^{-ax^2+bx}\,dx &= e^{b^2/4a}\sqrt{\frac{\pi}{a}}
+\end{align}
+in \eqref{a}
+\begin{align}
+    \implies f_Z(z) &= \frac{1}{2\pi}e^{\frac{(-iz)^2}{12}}\sqrt{\frac{\pi}{3}}\\
+    \implies f_Z(z) &= \frac{1}{\sqrt{12\pi}}e^{-\frac{{z}^2}{12}}
 \end{align}
 Now for $\pr{Z<-6}$
 \begin{align}
     \pr{Z<-6}&=\int_{-\infty}^{-6}f_Z(z)\,dz\\
              &=\int_{-\infty}^{-6}\frac{1}{ \sqrt{12\pi}}e^{-\frac{{z}^2}{12}}\,dz\\
              &=\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{-6}\frac{1}{ \sqrt{6}}e^{-\frac{{z}^2}{12}}\,dz
-             \label{a}
+             \label{b}
 \end{align}
-let $y=\frac{z}{\sqrt{6}}$ then \eqref{a} can be written as
+let $y=\frac{z}{\sqrt{6}}$ then \eqref{b} can be written as
 \begin{align}
-    \pr{Z<-6}&=\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{-\sqrt{6}}e^{-\frac{{y}^2}{2}}\,dy
-\end{align}
-\begin{align}
+    \pr{Z<-6}&=\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{-\sqrt{6}}e^{-\frac{{y}^2}{2}}\,dy\\
     \implies \pr{Z<-6}&=\Phi(-\sqrt{6})\\
-    \therefore \pr{X_1-X_2>6}=\Phi(-\sqrt{6})
+    \therefore \pr{X_1-X_2>6}&=\Phi(-\sqrt{6})
 \end{align}
 \end{document}
