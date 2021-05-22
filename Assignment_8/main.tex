@@ -153,7 +153,7 @@ Given, $(X_1,X_2)$ follows a bivariate normal distribution with
 where $\rho$ is correlation of $x_1$ and $x_2$\\
 We define mean matrix $\vec{\mu}$
 \begin{align}
-    \vec{\mu}&=\myvec{\mu_1\\
+    \vec{\mu_{\vec{x}}}&=\myvec{\mu_1\\
              \mu_2}
              =\myvec{0\\
              0}
@@ -161,72 +161,43 @@ We define mean matrix $\vec{\mu}$
 \end{align}
  and covariance matrix \vec{$\Sigma$} as follows
 \begin{align}
-    \vec{\Sigma}&=\myvec{\sigma_1^2&\rho\sigma_1\sigma_2\\
+    \vec{\Sigma_{\vec{x}}}&=\myvec{\sigma_1^2&\rho\sigma_1\sigma_2\\
                     \rho\sigma_1\sigma_2&\sigma_2^2}
                 = \myvec{2&-1\\
                         -1&2}
                 \label{b}
 \end{align}
-The characteristic function of bivariate is given by
+Let $\vec{u}=\myvec{-1\,\,1}$ and $\vec{x}=\myvec{X_1\\
+                    X_2}$ then,
 \begin{align}
-    \phi_{X_1 X_2}(t_1,t_2)=\mathbb{E}[e^{i(t_1X_1+t_2X_2)}]
-    \label{c}
-\end{align}
-which can also be written as
-\begin{align}
-    \phi_{X_1 X_2}(t_1,t_2)=\exp({i\vec{u}^{\top}\vec{\mu}-\frac{1}{2}\vec{u}^{\top}\vec{\Sigma}\vec{u}})
-    \label{d}
-\end{align}
-where
-\begin{align}
-    \vec{u}&=\myvec{t_1\\
-                   t_2}
-\end{align}
-by using \eqref{a} and \eqref{b} in \eqref{c} we get
-\begin{align}
-   \phi_{X_1 X_2}(t_1,t_2)&=\exp\brak{0-\frac{1}{2}\myvec{t_1&t_2}\myvec{2&-1\\
-                                                         -1&2}\myvec{t_1\\
-                                                                    t_2}}\\
-    \implies \phi_{X_1 X_2}(t_1,t_2)&=\exp\brak{-\frac{1}{2}\myvec{t_1&t_2}\myvec{2t_1-t_2\\
-                                                         2t_2-t_1}}\\
-    \implies \phi_{X_1 X_2}(t_1,t_2)&=e^{-\brak{t_1^2-t_1t_2+t_2^2}}
-    \label{e}
+    X_2-X_1=\vec{u}\vec{x}
 \end{align}
 Now consider a random variable Z defined as follows
 \begin{align}
-    Z=X_2-X_1
+    Z&=X_2-X_1\\
+    \implies \vec{z}&=\vec{u}\vec{x}
+\end{align}
+then $\vec{z}$ has normal distribution with mean
+\begin{align}
+    \mu_{\vec{z}}&=\vec{u}\vec{\mu_{\vec{x}}}\\
+    \implies \mu_{\vec{z}}&=\myvec{0}
+\end{align}
+and covariance matrix is given by
+\begin{align}
+    \Sigma_{\vec{z}}&=\vec{u}\vec{\Sigma_{\vec{x}}}\vec{u}^{\top}\\
+    \implies \Sigma_{\vec{z}}&=\myvec{-1\,\,1}\myvec{2&-1\\
+                                                     -1&2}\myvec{-1\\
+                                                                  1}\\
+    \implies \Sigma_{\vec{z}}&=\myvec{6}                
+\end{align}
+pdf of \vec{z} is given by
+\begin{align}
+    f_\vec{z}(z)&=\frac{1}{\sqrt{2\pi\mydet{\Sigma{_\vec{z}}}}}\exp{\brak{-\frac{1}{2}(\vec{z}-\mu_{\vec{z}})\Sigma^{-1}_{\vec{z}}(\vec{z}-\mu_{\vec{z}})^{\top}}}\\
+    \implies f_\vec{z}(z)&=\frac{1}{\sqrt{2\pi(6)}}\exp{\brak{-\frac{1}{2}(z)\brak{\frac{1}{6}}(z)}}\\
+    \implies f_\vec{z}(z)&=\frac{1}{\sqrt{12\pi}}e^{-\frac{{z}^2}{12}}
 \end{align}
 Then $\pr{X_1-X_2>6}$ can be written as $\pr{Z<-6}$\\
-characteristic function of Z can be written as
-\begin{align}
-    \phi_Z(t)&=\mathbb{E}[e^{itZ}]\\
-    \implies \phi_Z(t)&=\mathbb{E}[e^{it(X_2-X_1)}]
-    \label{f}
-\end{align}
-clearly form \eqref{c}, \eqref{f} can be written as
-\begin{align}
-    \phi_Z(t)&=\phi_{X_1 X_2}(-t,t)
-\end{align}
-from \eqref{e}
-\begin{align}
-    \phi_Z(t)&=e^{-\brak{t^2+t^2+t^2}}\\
-    \implies \phi_Z(t)&=e^{-3t^2}
-\end{align}
-Now we can find pdf of Z by using a variation of Gil-Peleaz inversion formula
-\begin{align}
-    f_Z(z)&=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{-itz}\phi_Z(t)\,dt\\
-    \implies f_Z(z)&=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{\brak{-3t^2-itz}}\,dt
-    \label{g}
-\end{align}
-Using the result of Gaussian integral
-\begin{align}
-    \int_{-\infty}^{\infty}e^{-ax^2+bx}\,dx &= e^{b^2/4a}\sqrt{\frac{\pi}{a}}
-\end{align}
-in \eqref{g}
-\begin{align}
-    \implies f_Z(z) &= \frac{1}{2\pi}e^{\frac{(-iz)^2}{12}}\sqrt{\frac{\pi}{3}}\\
-    \implies f_Z(z) &= \frac{1}{\sqrt{12\pi}}e^{-\frac{{z}^2}{12}}
-\end{align}
+
 Now for $\pr{Z<-6}$
 \begin{align}
     \pr{Z<-6}&=\int_{-\infty}^{-6}f_Z(z)\,dz\\
