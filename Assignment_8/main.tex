@@ -147,8 +147,8 @@ Given, $(X_1,X_2)$ follows a bivariate normal distribution with
 \begin{align}
     \mu_1=\mu_2&=0\\
     \sigma^2_1=\sigma^2_2&=2\\
-    V_{12}&=-1\\
-    \rho=\frac{V_{12}}{\sigma_1\sigma_2}&=\frac{-1}{2}
+    Cov(X_1,X_2)&=-1\\
+    \rho=\frac{Cov(X_1,X_2)}{\sigma_1\sigma_2}&=\frac{-1}{2}
 \end{align}
 where $\rho$ is correlation of $x_1$ and $x_2$\\
 We define mean matrix $\vec{\mu}$
@@ -167,48 +167,39 @@ We define mean matrix $\vec{\mu}$
                         -1&2}
                 \label{b}
 \end{align}
-Let $\vec{u}=\myvec{-1\,\,1}$ and $\vec{x}=\myvec{X_1\\
-                    X_2}$ then,
+Let $\vec{u}=\myvec{-1\\
+                    1}$ and $\vec{x}=\myvec{X_1\\
+                                            X_2}$ then,
 \begin{align}
-    X_2-X_1=\vec{u}\vec{x}
+    X_2-X_1=\vec{u}^{\top}\vec{x}
 \end{align}
 Now consider a random variable Z defined as follows
 \begin{align}
-    Z&=X_2-X_1\\
-    \implies \vec{z}&=\vec{u}\vec{x}
+    Y&=X_2-X_1\\
+    \implies \vec{z}&=\vec{u}^{\top}\vec{x}
 \end{align}
-then $\vec{z}$ has normal distribution with mean
+then $\vec{y}$ has normal distribution with mean
 \begin{align}
-    \mu_{\vec{z}}&=\vec{u}\vec{\mu_{\vec{x}}}\\
-    \implies \mu_{\vec{z}}&=\myvec{0}
+    \mu_{\vec{y}}&=\vec{u}^{\top}\vec{\mu_{\vec{x}}}\\
+    \implies \mu_{\vec{y}}&=\myvec{0}
 \end{align}
 and covariance matrix is given by
 \begin{align}
-    \Sigma_{\vec{z}}&=\vec{u}\vec{\Sigma_{\vec{x}}}\vec{u}^{\top}\\
-    \implies \Sigma_{\vec{z}}&=\myvec{-1\,\,1}\myvec{2&-1\\
+    \Sigma_{\vec{y}}&=\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\brak{\vec{u}^{\top}}^{\top}\\
+    \implies \Sigma_{\vec{y}}&=\myvec{-1\,\,1}\myvec{2&-1\\
                                                      -1&2}\myvec{-1\\
                                                                   1}\\
-    \implies \Sigma_{\vec{z}}&=\myvec{6}                
+    \implies \Sigma_{\vec{y}}&=\myvec{6}                
 \end{align}
-pdf of \vec{z} is given by
-\begin{align}
-    f_\vec{z}(z)&=\frac{1}{\sqrt{2\pi\mydet{\Sigma{_\vec{z}}}}}\exp{\brak{-\frac{1}{2}(\vec{z}-\mu_{\vec{z}})\Sigma^{-1}_{\vec{z}}(\vec{z}-\mu_{\vec{z}})^{\top}}}\\
-    \implies f_\vec{z}(z)&=\frac{1}{\sqrt{2\pi(6)}}\exp{\brak{-\frac{1}{2}(z)\brak{\frac{1}{6}}(z)}}\\
-    \implies f_\vec{z}(z)&=\frac{1}{\sqrt{12\pi}}e^{-\frac{{z}^2}{12}}
-\end{align}
-Then $\pr{X_1-X_2>6}$ can be written as $\pr{Z<-6}$\\
+Therefore, $Y \sim \mathcal{N}(\mu=0,\sigma^2=6)$\\
+The Standard Normal, often written Z, is a Normal with $\mu=0$ and $\sigma^2=1$. Thus, $Z \sim \mathcal{N}(\mu=0,\sigma^2=1)$\\
 
-Now for $\pr{Z<-6}$
+Now $\pr{X_1-X_2>6}$ can be written as $\pr{Y<-6}$
 \begin{align}
-    \pr{Z<-6}&=\int_{-\infty}^{-6}f_Z(z)\,dz\\
-             &=\int_{-\infty}^{-6}\frac{1}{ \sqrt{12\pi}}e^{-\frac{{z}^2}{12}}\,dz\\
-             &=\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{-6}\frac{1}{ \sqrt{6}}e^{-\frac{{z}^2}{12}}\,dz
-             \label{h}
-\end{align}
-let $y=\frac{z}{\sqrt{6}}$ then \eqref{h} can be written as
-\begin{align}
-    \pr{Z<-6}&=\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{-\sqrt{6}}e^{-\frac{{y}^2}{2}}\,dy\\
-    \implies \pr{Z<-6}&=\Phi(-\sqrt{6})\\
+    \pr{Y<-6}&=\pr{\frac{Y-\mu_y}{\sigma_y}<\frac{-6-\mu_y}{\sigma_y}}\\
+    \implies \pr{Y<-6}&=\pr{Z<\frac{-6}{\sqrt{6}}}\\
+    \implies \pr{Y<-6}&=\pr{Z<-\sqrt{6}}\\
+    \implies \pr{Y<-6}&=\Phi(-\sqrt{6})\\
     \therefore \pr{X_1-X_2>6}&=\Phi(-\sqrt{6})
 \end{align}
 \end{document}
