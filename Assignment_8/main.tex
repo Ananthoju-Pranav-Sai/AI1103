@@ -165,7 +165,7 @@ If $\Phi(x)$=$\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{{y}^2}{2}}\, dy$
     \end{align}
 \end{definition}
 \begin{theorem}
-     Let $\vec{x}$ be a $K\times1$ multivariate normal random vector with mean $\vec{\mu}_x$ and covariance matrix $\vec{\Sigma_{\vec{x}}}$. Let $\vec{A}$ be an $L\times1$ real vector and $\vec{B}$ an $L\timesK$ full-rank real matrix. Then the $L\times1$ random vector $\vec{y}$ defined by
+     Let $\vec{x}$ be a $K\times1$ multivariate normal random vector with mean $\vec{\mu}_x$ and covariance matrix $\vec{\Sigma_{\vec{x}}}$. Let $\vec{A}$ be an $L\times1$ real vector and $\vec{B}$ an $L\times K$ full-rank real matrix. Then the $L\times1$ random vector $\vec{y}$ defined by
      \begin{align}
          \vec{y}=\vec{A}+\vec{B}\vec{x}
      \end{align}
@@ -209,32 +209,45 @@ If $\Phi(x)$=$\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{{y}^2}{2}}\, dy$
     Now consider a random variable Y defined as follows
     \begin{align}
         Y&=X_2-X_1\\
-        \implies \vec{y}&=\vec{u}^{\top}\vec{x}
+        \implies y&=\vec{u}^{\top}\vec{x}
     \end{align}
-    then $\vec{y}$ has normal distribution with mean
+    then $Y$ has normal distribution with mean
     \begin{align}
-        \mu_{\vec{y}}&=\vec{u}^{\top}\vec{\mu_{\vec{x}}}\\
-        \implies \mu_{\vec{y}}&=\myvec{-1\,\,1}\myvec{\mu_1\\
-                                                      \mu_2}\\
-        \implies \mu_{\vec{y}}&=\myvec{\mu_2-\mu_1}
+        \mu_{y}&=\vec{u}^{\top}\vec{\mu_{\vec{x}}}
     \end{align}
-    and covariance matrix is given by
+    and variance is given by
     \begin{align}
-        \Sigma_{\vec{y}}&=\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\brak{\vec{u}^{\top}}^{\top}\\
-        \implies \Sigma_{\vec{y}}&=\myvec{-1\,\,1}\myvec{\sigma^2_1&\rho\sigma_1\sigma_2\\
-                                                         \rho\sigma_1\sigma_2&\sigma^2_2}\myvec{-1\\
-                                                                                                1}\\
-        \implies \Sigma_{\vec{y}}&=\myvec{\sigma^2_1+\sigma^2_2-2\rho\sigma_1\sigma_2}                
+        \sigma^2_{y}&=\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\brak{\vec{u}^{\top}}^{\top}\\
+        \implies \sigma^2_{y}&=\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\vec{u}
     \end{align}
-    $\therefore$ $Y\sim\mathcal{N}(\mu=\mu_2-\mu_1,\sigma^2=\sigma^2_1+\sigma^2_2-2\rho\sigma_1\sigma_2)$\\
+    $\therefore$ $Y\sim\mathcal{N}(\mu=\vec{u}^{\top}\vec{\mu_{\vec{x}}},\sigma^2=\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\vec{u})$\\
     
     The Standard Normal, often written Z, is a Normal with $\mu=0$ and $\sigma^2=1$. Thus, $Z \sim \mathcal{N}(\mu=0,\sigma^2=1)$\\
 
-    Now $\pr{X_1-X_2>\alpha}$ can be written as $\pr{Y<-\alpha}$\\
-    
+    Now $\pr{X_1-X_2>\alpha}$ can be written as $\pr{Y<-\alpha}$
     \begin{align}
         \pr{Y<-\alpha}&=\pr{\frac{Y-\mu_y}{\sigma_y}<\frac{-\alpha-\mu_y}{\sigma_y}}\\
-        \implies \pr{Y<-\alpha}&=\pr{Z<\frac{-\alpha-(\mu_2-\mu_1)}{\sqrt{\sigma^2_1+\sigma^2_2-2\rho\sigma_1\sigma_2}}}\\
+        \implies \pr{Y<-\alpha}&=\pr{Z<\frac{-(\alpha+\vec{u}^{\top}\vec{\mu_{\vec{x}})}}{\sqrt{\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\vec{u}}}}\\
+        \therefore \pr{X_1-X_2>\alpha}&=\Phi\brak{\frac{-(\alpha+\vec{u}^{\top}\vec{\mu_{\vec{x}})}}{\sqrt{\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\vec{u}}}}
+    \end{align}
+    \begin{lemma}
+        \begin{align}
+            \mu_{y}&=\vec{u}^{\top}\vec{\mu_{\vec{x}}}\\
+            \implies \mu_{\vec{y}}&=\myvec{-1\,\,1}\myvec{\mu_1\\
+                                                      \mu_2}\\
+            \implies \mu_{\vec{y}}&=\myvec{\mu_2-\mu_1}
+        \end{align}
+    \end{lemma}
+    \begin{lemma}
+        \begin{align}
+        \sigma^2_{y}&=\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\vec{u}\\
+        \implies \sigma^2_{y}&=\myvec{-1\,\,1}\myvec{\sigma^2_1&\rho\sigma_1\sigma_2\\
+                                                         \rho\sigma_1\sigma_2&\sigma^2_2}\myvec{-1\\
+                                                                                                1}\\
+        \implies \sigma^2_{y}&=\myvec{\sigma^2_1+\sigma^2_2-2\rho\sigma_1\sigma_2}
+        \end{align}
+    \end{lemma}
+    \begin{align}
         \therefore \pr{X_1-X_2>\alpha}&=\Phi\brak{\frac{(\mu_1-\mu_2)-\alpha}{\sqrt{\sigma^2_1+\sigma^2_2-2\rho\sigma_1\sigma_2}}}
     \end{align}
 \end{proof}
