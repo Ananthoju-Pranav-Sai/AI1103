@@ -165,13 +165,13 @@ If $\Phi(x)$=$\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{{y}^2}{2}}\, dy$
     \end{align}
 \end{definition}
 \begin{theorem}
-     Let $\vec{x}$ be a $K\times1$ multivariate normal random vector with mean $\vec{\mu}_x$ and covariance matrix $\vec{\Sigma_{\vec{x}}}$. Let $\vec{A}$ be an $L\times1$ real vector and $\vec{B}$ an $L\times K$ full-rank real matrix. Then the $L\times1$ random vector $\vec{y}$ defined by
+     Let $\vec{x}$ be a $K\times1$ multivariate normal random vector with mean $\vec{\mu}_x$ and covariance matrix $\vec{\Sigma_{\vec{x}}}$. Let $\vec{a}$ be an $L\times1$ real vector and $\vec{B}$ an $L\times K$ full-rank real matrix. Then the $L\times1$ random vector $\vec{y}$ defined by
      \begin{align}
-         \vec{y}=\vec{A}+\vec{B}\vec{x}
+         \vec{y}=\vec{a}+\vec{B}\vec{x}
      \end{align}
      has a multivariate normal distribution with mean
      \begin{align}
-         \vec{\mu_\vec{y}}=\vec{A}+\vec{B}\vec{\mu_x}
+         \vec{\mu_\vec{y}}=\vec{a}+\vec{B}\vec{\mu_x}
      \end{align}
      and covariance matrix
      \begin{align}
@@ -187,14 +187,14 @@ If $\Phi(x)$=$\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{{y}^2}{2}}\, dy$
     Therefore, the joint moment generating function of $\vec{y}$ is
     \begin{align}
         M_{\vec{y}}(\vec{t})&=\mathbb{E}[\exp{\brak{\vec{t}^{\top}\vec{y}}}]\\
-                            &=\mathbb{E}[\exp{\brak{\vec{t}^{\top}\brak{\vec{A}+\vec{B}\vec{x}}}}]\\ &=\exp{\brak{\vec{t}^{\top}\vec{A}}}\mathbb{E}[\brak{\vec{t}^{\top}{\vec{B}\vec{x}}}]\\ &=\exp{\brak{\vec{t}^{\top}\vec{A}}}\mathbb{E}[\brak{\vec{B}^{\top}\vec{t}}^{\top}\vec{x}]\\
-                            &=\exp{\brak{\vec{t}^{\top}\vec{A}}}M_{\vec{x}}(\vec{B}^{\top}\vec{t})\\
-                            &=\exp{\brak{\vec{t}^{\top}\vec{A}}}\exp{\brak{(\vec{B}^{\top}\vec{t})^{\top}\vec{\mu_x}+\frac{1}{2}(\vec{B}^{\top}\vec{t})^{\top}\vec{\Sigma_x}\vec{B}^{\top}\vec{t}}}\\
-                            &=\exp\brak{\vec{t}^{\top}(\vec{A}+\vec{B}\vec{\mu_x})+\frac{1}{2}\vec{t}\vec{B}\vec{\Sigma_x}\vec{B}^{\top}\vec{t}^{\top}}
+                            &=\mathbb{E}[\exp{\brak{\vec{t}^{\top}\brak{\vec{a}+\vec{B}\vec{x}}}}]\\ &=\exp{\brak{\vec{t}^{\top}\vec{a}}}\mathbb{E}[\brak{\vec{t}^{\top}{\vec{B}\vec{x}}}]\\ &=\exp{\brak{\vec{t}^{\top}\vec{a}}}\mathbb{E}[\brak{\vec{B}^{\top}\vec{t}}^{\top}\vec{x}]\\
+                            &=\exp{\brak{\vec{t}^{\top}\vec{a}}}M_{\vec{x}}(\vec{B}^{\top}\vec{t})\\
+                            &=\exp{\brak{\vec{t}^{\top}\vec{a}}}\exp{\brak{(\vec{B}^{\top}\vec{t})^{\top}\vec{\mu_x}+\frac{1}{2}(\vec{B}^{\top}\vec{t})^{\top}\vec{\Sigma_x}\vec{B}^{\top}\vec{t}}}\\
+                            &=\exp\brak{\vec{t}^{\top}(\vec{a}+\vec{B}\vec{\mu_x})+\frac{1}{2}\vec{t}\vec{B}\vec{\Sigma_x}\vec{B}^{\top}\vec{t}^{\top}}
     \end{align}
-    which is the moment generating function of a multivariate normal distribution with mean $\vec{A}+\vec{B}\vec{\mu}$ and covariance matrix $\vec{B}\vec{\Sigma_x}\vec{B}^{\top}$.\\
+    which is the moment generating function of a multivariate normal distribution with mean $\vec{a}+\vec{B}\vec{\mu}$ and covariance matrix $\vec{B}\vec{\Sigma_x}\vec{B}^{\top}$.\\
     
-    $\therefore$ $\vec{\mu_\vec{y}}=\vec{A}+\vec{B}\vec{\mu_x}$ and $\vec{\Sigma_y}=\vec{B}\vec{\Sigma_x}\vec{B}^{\top}$
+    $\therefore$ $\vec{\mu_\vec{y}}=\vec{a}+\vec{B}\vec{\mu_x}$ and $\vec{\Sigma_y}=\vec{B}\vec{\Sigma_x}\vec{B}^{\top}$
 \end{proof}
 \begin{theorem}\label{1.1}
     If $(X_1,X_2)$ follow bivariate distribution then $\pr{X_1-X_2>\alpha}$ is given by $\Phi\brak{\frac{(\mu_1-\mu_2)-\alpha}{\sqrt{\sigma^2_1+\sigma^2_2-2\rho\sigma_1\sigma_2}}}$.
