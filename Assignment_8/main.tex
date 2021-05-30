@@ -165,7 +165,7 @@ If $\Phi(x)$=$\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{{y}^2}{2}}\, dy$
     \end{align}
 \end{definition}
 \begin{theorem}
-     Let $\vec{x}$ be a $K\times1$ multivariate normal random vector with mean $\vec{\mu}_x$ and covariance matrix $\vec{\Sigma_{\vec{x}}}$. Let $\vec{a}$ be an $L\times1$ real vector and $\vec{B}$ an $L\times K$ full rank real matrix with $K>L$ .Then the $L\times1$ random vector $\vec{y}$ defined by
+     Let $\vec{x}$ be a $K\times1$ multivariate normal random vector with mean $\vec{\mu}_x$ and covariance matrix $\vec{\Sigma_{\vec{x}}}$. Let $\vec{a}$ be an $L\times1$ real vector and $\vec{B}$ an $L\times K$ full rank real matrix with $K>L$ . Then the $L\times1$ random vector $\vec{y}$ defined by
      \begin{align}
          \vec{y}=\vec{a}+\vec{B}\vec{x}
      \end{align}
@@ -229,6 +229,7 @@ If $\Phi(x)$=$\frac{1}{ \sqrt{2\pi}}\int_{-\infty}^{x}e^{-\frac{{y}^2}{2}}\, dy$
         \pr{Y<-\alpha}&=\pr{\frac{Y-\mu_y}{\sigma_y}<\frac{-\alpha-\mu_y}{\sigma_y}}\\
         \implies \pr{Y<-\alpha}&=\pr{Z<\frac{-(\alpha+\vec{u}^{\top}\vec{\mu_{\vec{x}})}}{\sqrt{\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\vec{u}}}}\\
         \therefore \pr{X_1-X_2>\alpha}&=\Phi\brak{\frac{-(\alpha+\vec{u}^{\top}\vec{\mu_{\vec{x}})}}{\sqrt{\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\vec{u}}}}
+        \label{a}
     \end{align}
     \begin{lemma}
         \begin{align}
@@ -256,12 +257,21 @@ Given $(X_1,X_2)$ follow a bivariate normal distribution with
     \mu_1=\mu_2&=0\\
     \sigma^2_1=\sigma^2_2&=2\\
     Cov(X_1,X_2)&=-1\\
-    \rho=\frac{Cov(X_1,X_2)}{\sigma_1\sigma_2}&=\frac{-1}{2}
+    \rho=\frac{Cov(X_1,X_2)}{\sigma_1\sigma_2}&=\frac{-1}{2}\\
+    \vec{\mu_{\vec{x}}}=\myvec{\mu_1\\
+                                    \mu_2}&=\myvec{0\\
+                                                  0}\\
+     \vec{\Sigma_{\vec{x}}}=\myvec{\sigma_1^2&\rho\sigma_1\sigma_2\\
+                                        \rho\sigma_1\sigma_2&\sigma_2^2}&=\myvec{2&-1\\
+                                                                                -1&2}
 \end{align}
-for $\pr{X_1-X_2>6}$ we can use the above theorem as follows
+for $\pr{X_1-X_2>6}$ we can use \eqref{a}
 \begin{align}
-    \pr{X_1-X_2>\alpha}&=\Phi\brak{\frac{(\mu_1-\mu_2)-\alpha}{\sqrt{\sigma^2_1+\sigma^2_2-2\rho\sigma_1\sigma_2}}}\\
-    \implies \pr{X_1-X_2>6}&=\Phi\brak{\frac{(0-0)-6}{\sqrt{2+2-2\brak{\frac{-1}{2}}2}}}\\
+    \pr{X_1-X_2>6}&=\Phi\brak{\frac{-(6+\vec{u}^{\top}\vec{\mu_{\vec{x}})}}{\sqrt{\vec{u}^{\top}\vec{\Sigma_{\vec{x}}}\vec{u}}}}
+\end{align}
+where $\vec{u}=\myvec{-1\\
+                        1}$ using python for vector multiplications we get
+\begin{align}
     \implies \pr{X_1-X_2>6}&=\Phi\brak{\frac{-6}{\sqrt{6}}}\\
     \therefore \pr{X_1-X_2>6}&=\Phi(-\sqrt{6})
 \end{align}
