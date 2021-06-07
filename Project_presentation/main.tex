@@ -128,9 +128,9 @@ Communication}
     \end{figure}
 \end{frame}
 \begin{frame}{Collision point calculation contd..}
-    So at every point in the predicted trajectory, RSU will calculate the distance between each circle and the set of opposite circles of other vehicle and the  collision will occur if the distance is equal or less than the sum of diameters of both circles,  as shown in \eqref{c}. While \eqref{d} is used to determine the point of collision.
+    So at every point in the predicted trajectory, RSU will calculate the distance between each circle and the set of opposite circles of other vehicle and the  collision will occur if the distance is equal or less than the sum of radii of both circles,  as shown in \eqref{c}. While \eqref{d} is used to determine the point of collision.
     \begin{align}
-        d_{1,2}&=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}, r_1+r_2<d_{1,2}
+        d_{1,2}&=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}, d_{1,2}<r_1+r_2
         \label{c}\\
         c_x&=\frac{x_1r_1+x_2r_2}{r_1+r_2},c_y=\frac{y_1r_1+y_1r_2}{r_1+r_2}
         \label{d}
